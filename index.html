@@ -99,7 +99,10 @@
 
       const feature3 = gitgraph.branch({
         parentBranch: master,
-        name: "cross_entitlment"
+        name: "cross_entitlment",
+        style: {
+          color: "orange"
+        }
       });
       feature3
         .commit({
