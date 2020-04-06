@@ -9,8 +9,8 @@
     <script>
       const graphContainer = document.getElementById("graph-container");
       const gitgraph = GitgraphJS.createGitgraph(graphContainer, {
-        templateExtend: templateExtend("metro", {
-          colors: ["red", "blue", "orange", "IndianRed"],
+        template: GitgraphJS.templateExtend("metro", {
+          colors: ["gray", "blue", "DarkOrange"]
         })
       });
 
@@ -62,24 +62,48 @@
       release_100
         .commit({
           subject: "Set version number",
-          author
+          author,
+          style: {
+            dot: {
+              color: "green"
+            },
+            message: {
+              color: "green"
+            }
+          }
         })
         .commit({
           subject: "Crash fix",
           author,
           style: {
-            dot: { color: "green" }
+            dot: {
+              color: "green"
+            },
+            message: {
+              color: "green"
+            }
           }
         });
       release_100.commit({
         subject: "Fix issue with audio",
         author,
         style: {
-          dot: { color: "green" }
+          dot: {
+            color: "green"
+          },
+          message: {
+            color: "green"
+          }
         }
       });
 
-      release_100.tag("v1.0.0");
+      release_100.tag({
+        name: "v1.0.0",
+        style: {
+          strokeColor: "green",
+          bgColor: "green"
+        }
+      });
 
       const release_101 = gitgraph.branch({
         parentBranch: release_100,
@@ -91,13 +115,35 @@
       release_101
         .commit({
           subject: "Set version number",
-          author
+          author,
+          style: {
+            dot: {
+              color: "green"
+            },
+            message: {
+              color: "green"
+            }
+          }
         })
         .commit({
           subject: "Urgent hotfix",
-          author
+          author,
+          style: {
+            dot: {
+              color: "green"
+            },
+            message: {
+              color: "green"
+            }
+          }
         });
-      release_101.tag("v1.0.1");
+      release_101.tag({
+        name: "v1.0.1",
+        style: {
+          strokeColor: "green",
+          bgColor: "green"
+        }
+      });
 
       master.merge({ branch: release_100, commitOptions: { author } });
 
@@ -129,11 +175,28 @@
         })
         .commit({
           subject: "Set version number",
-          author
+          author,
+          style: {
+            dot: {
+              color: "green"
+            },
+            message: {
+              color: "green"
+            }
+          }
         });
 
-      release_200.tag("v2.0.0");
-      master.merge({ branch: release_200, commitOptions: { author } });
+      release_200.tag({
+        name: "v2.0.0",
+        style: {
+          strokeColor: "green",
+          bgColor: "green"
+        }
+      });
+      master.merge({
+        branch: release_200,
+        commitOptions: { author }
+      });
     </script>
   </body>
 </html>
