@@ -101,17 +101,23 @@
         parentBranch: master,
         name: "cross_entitlment",
         style: {
-          color: "orange"
+          color: "IndianRed"
         }
       });
       feature3
         .commit({
           subject: "Make it work",
-          author
+          author,
+          style: {
+            dot: { color: "IndianRed" }
+          }
         })
         .commit({
           subject: "Make it fast",
-          author
+          author,
+          style: {
+            dot: { color: "IndianRed" }
+          }
         });
 
       master.merge({ branch: feature3, commitOptions: { author } });
