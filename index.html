@@ -8,7 +8,11 @@
 
     <script>
       const graphContainer = document.getElementById("graph-container");
-      const gitgraph = GitgraphJS.createGitgraph(graphContainer, {});
+      const gitgraph = GitgraphJS.createGitgraph(graphContainer, {
+        templateExtend: templateExtend("metro", {
+          colors: ["red", "blue", "orange", "IndianRed"],
+        })
+      });
 
       const author = "Javier <test@test.com>";
 
@@ -99,27 +103,16 @@
 
       const feature3 = gitgraph.branch({
         parentBranch: master,
-        name: "cross_entitlment",
-        style: {
-          color: "IndianRed"
-        }
+        name: "cross_entitlment"
       });
       feature3
         .commit({
           subject: "Make it work",
-          author,
-          style: {
-            dot: { color: "IndianRed" },
-            message: { color: "IndianRed" }
-          }
+          author
         })
         .commit({
           subject: "Make it fast",
-          author,
-          style: {
-            dot: { color: "IndianRed" },
-            message: { color: "IndianRed" }
-          }
+          author
         });
 
       master.merge({ branch: feature3, commitOptions: { author } });
